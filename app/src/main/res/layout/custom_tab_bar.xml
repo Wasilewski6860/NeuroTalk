@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/tab_shape_bar_background"
+    android:paddingVertical="4dp"
+    android:paddingHorizontal="6dp"
+    android:layout_height="40dp">
+
+    <LinearLayout
+        android:id="@+id/view_indicator_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:weightSum="2"
+        >
+        <View
+            android:id="@+id/view_indicator"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/tab_shape_indicator"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_tabs_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:weightSum="2">
+
+
+    </LinearLayout>
+
+</RelativeLayout>
