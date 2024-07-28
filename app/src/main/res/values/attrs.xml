@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RegistrationTabBar">
+        <attr name="android:entries"/>
+    </declare-styleable>
+
+    <attr name="registrationBarItemColor" format="color"/>
+
+    <declare-styleable name="CustomCardView">
+        <attr name="cardImage" format="reference"/>
+        <attr name="cardText" format="reference"/>
+    </declare-styleable>
+</resources>
