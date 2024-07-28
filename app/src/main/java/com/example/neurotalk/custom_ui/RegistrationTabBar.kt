@@ -63,7 +63,7 @@ class RegistrationTabBar(
 
     private fun setupAttrs(attrs: AttributeSet?) {
         val typedArray = context.theme.obtainStyledAttributes(
-            attrs, R.styleable.RegistrationTabBar , 0 , 0
+            attrs, R.styleable.RegistrationTabBar, 0, 0
         )
 
         listTabName = typedArray
@@ -99,10 +99,12 @@ class RegistrationTabBar(
             0, ViewGroup.LayoutParams.MATCH_PARENT, 1f
         )
         gravity = Gravity.CENTER
-        setTextColor(ContextCompat.getColor(
-            this.context,
-            if (!isDarkThemeEnabled) R.color.black else R.color.white
-        ))
+        setTextColor(
+            ContextCompat.getColor(
+                this.context,
+                if (!isDarkThemeEnabled) R.color.black else R.color.white
+            )
+        )
         textSize = 16f
 
         setOnClickListener {
@@ -122,6 +124,18 @@ class RegistrationTabBar(
             isAnimating = true
             start()
             doOnEnd { isAnimating = false }
+        }
+
+        when (index) {
+            0 -> {
+                listTabTextViews[0].setTextColor(ContextCompat.getColor(context, R.color.white))
+                listTabTextViews[1].setTextColor(ContextCompat.getColor(context, R.color.black))
+            }
+
+            1 -> {
+                listTabTextViews[1].setTextColor(ContextCompat.getColor(context, R.color.white))
+                listTabTextViews[0].setTextColor(ContextCompat.getColor(context, R.color.black))
+            }
         }
     }
 
