@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "NeuroTalk"
 include ':app'
+include ':base'
+include ':tools'
