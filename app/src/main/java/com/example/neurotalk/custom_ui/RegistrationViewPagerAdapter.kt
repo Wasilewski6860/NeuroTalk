@@ -3,8 +3,8 @@ package com.example.neurotalk.custom_ui
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.neurotalk.registration_fragment.RegistrationFragment
-import com.example.neurotalk.registration_fragment.SignInFragment
+import com.example.neurotalk.presentation.auth.RegistrationFragment
+import com.example.neurotalk.presentation.auth.SignInFragment
 
 class RegistrationViewPagerAdapter(
     fragmentActivity: FragmentActivity
