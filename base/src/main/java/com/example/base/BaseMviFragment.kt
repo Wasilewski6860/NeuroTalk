@@ -33,10 +33,6 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
     viewModel.onCreated()
   }
 
-  /**
-   * Override this method to set a function to be called on a back button press.
-   * A typical example is to send some kind of Feature.Message.Back message
-   */
   protected open val backButtonCallback: (() -> Unit)? = null
 
   abstract fun initDispatchers()
