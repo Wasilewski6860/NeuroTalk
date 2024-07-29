@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NeuroTalk</string>
     <string name="stub" translatable="false">STUB!</string>
+    <string name="confirmation_error">Password and confirm password should be equals</string>
 </resources>

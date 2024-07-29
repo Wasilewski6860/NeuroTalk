@@ -2,6 +2,7 @@ package com.example.neurotalk.app
 
 import android.app.Application
 import com.example.neurotalk.di.ApplicationComponent
+import com.example.neurotalk.di.DaggerApplicationComponent
 
 class NeuroTalkApp : Application() {
 
@@ -10,6 +11,6 @@ class NeuroTalkApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-//        applicationComponent = DaggerApplicationComponent.factory().create(this)
+        applicationComponent = DaggerApplicationComponent.factory().create(this)
     }
 }

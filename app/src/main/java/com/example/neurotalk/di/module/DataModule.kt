@@ -21,18 +21,6 @@ import javax.inject.Singleton
 @Module
 class DataModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideAppDatabase(context: Context): ChatDatabase {
-//        return ChatDatabase.getDataBase(context)
-//    }
-
-//    @Singleton
-//    @Provides
-//    fun provideSomeDao(database: ChatDatabase): SomeDao {
-//        return database.someDao()
-//    }
-
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
