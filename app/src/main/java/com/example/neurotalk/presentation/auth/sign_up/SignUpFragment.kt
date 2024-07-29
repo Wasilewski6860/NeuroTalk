@@ -1,22 +1,22 @@
-package com.example.neurotalk.presentation.auth
+package com.example.neurotalk.presentation.auth.sign_up
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.neurotalk.databinding.SignInFragmentBinding
+import com.example.neurotalk.databinding.RegistrationFragmentBinding
 
-class SignInFragment : Fragment() {
+class SignUpFragment : Fragment() {
 
-    private lateinit var binding: SignInFragmentBinding
+    private lateinit var binding: RegistrationFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = SignInFragmentBinding.inflate(layoutInflater, container, false)
+        binding = RegistrationFragmentBinding.inflate(layoutInflater, container, false)
 
         binding.apply {
 

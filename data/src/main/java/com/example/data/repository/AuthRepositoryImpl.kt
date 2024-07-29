@@ -9,7 +9,7 @@ import com.example.domain.repository.AuthRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class AuthRepositoryImpl(private val authApi: AuthApi) :
+class AuthRepositoryImpl (private val authApi: AuthApi) :
     AuthRepository {
 
     override suspend fun register(
