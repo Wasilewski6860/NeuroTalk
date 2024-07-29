@@ -1,4 +1,4 @@
-package com.example.neurotalk.registration_fragment
+package com.example.neurotalk.presentation.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
