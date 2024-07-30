@@ -13,7 +13,7 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
 
   private val TAG = this::class.simpleName
 
-  protected abstract val viewModel: BaseMviViewModel<State, Message, Dependency>
+  protected abstract var viewModel: BaseMviViewModel<State, Message, Dependency>
 
   constructor() : super()
   constructor(@LayoutRes layoutRes: Int) : super(layoutRes)
