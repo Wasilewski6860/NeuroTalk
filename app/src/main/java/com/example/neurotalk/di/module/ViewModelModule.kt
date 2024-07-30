@@ -1,16 +1,12 @@
 package com.example.neurotalk.di.module
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.neurotalk.presentation.auth.sign_in.SignInViewModel
-import com.example.neurotalk.presentation.auth.sign_up.SignUpViewModel
+import com.example.neurotalk.presentation.auth.sign_in.viewmodel.SignInViewModel
+import com.example.neurotalk.presentation.auth.sign_up.viewmodel.SignUpViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
-import javax.inject.Singleton
 
 @Module
 abstract class ViewModelModule {

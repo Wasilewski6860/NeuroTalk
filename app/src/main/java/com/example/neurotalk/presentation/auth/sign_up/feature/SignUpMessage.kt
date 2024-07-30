@@ -1,7 +1,6 @@
-package com.example.neurotalk.presentation.auth.sign_up
+package com.example.neurotalk.presentation.auth.sign_up.feature
 
 import com.example.domain.coroutines.Response
-import java.time.LocalTime
 
 sealed class SignUpMessage {
 

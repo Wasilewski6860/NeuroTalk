@@ -1,11 +1,11 @@
-package com.example.neurotalk.presentation.auth.sign_up
+package com.example.neurotalk.presentation.auth.sign_up.viewmodel
 
-import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.example.base.BaseMviViewModel
-import com.example.domain.usecase.auth.LoginUseCase
-import com.example.domain.usecase.auth.RegisterUseCase
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpDependencies
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpFeature
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpMessage
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpState
 import javax.inject.Inject
 
 class SignUpViewModel @Inject constructor(

@@ -1,7 +1,6 @@
-package com.example.neurotalk.presentation.auth.sign_up
+package com.example.neurotalk.presentation.auth.sign_up.feature
 
 import android.content.Context
-import android.view.View
 import com.example.base.coroutines.Effect
 import com.example.base.coroutines.Update
 import com.example.base.coroutines.adaptIdle
@@ -9,9 +8,7 @@ import com.example.base.coroutines.noEffects
 import com.example.base.coroutines.with
 import com.example.domain.coroutines.Response
 import com.example.domain.usecase.auth.RegisterUseCase
-import com.example.neurotalk.R
 import com.example.neurotalk.common.effects.NavigationEffects
-import com.example.neurotalk.common.effects.SnackbarEffects
 import com.example.neurotalk.navigation.Screen
 import com.example.neurotalk.presentation.auth.AuthNavigator
 
@@ -43,7 +40,7 @@ object SignUpFeature {
 //                setOf(
 //            SnackbarEffects.Show(R.string.confirmation_error) { Pair(context, rootView) }
 //        )
-        else SignUpState.Loading with setOf( Effects.SignUp(name, email, password) )
+        else SignUpState.Loading with setOf(Effects.SignUp(name, email, password))
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.neurotalk.presentation.auth.sign_up
+package com.example.neurotalk.presentation.auth.sign_up.feature
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

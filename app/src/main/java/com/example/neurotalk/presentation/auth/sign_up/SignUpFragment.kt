@@ -1,24 +1,21 @@
 package com.example.neurotalk.presentation.auth.sign_up
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.RegistrationFragmentBinding
-import com.example.neurotalk.presentation.auth.sign_in.ViewModelFactory
-import com.example.neurotalk.presentation.main.MainActivity
-import com.example.neurotalk.utils.appComponent
-import com.example.neurotalk.utils.lazyViewModel
-import java.time.LocalTime
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpDependencies
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpMessage
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpState
+import com.example.neurotalk.presentation.auth.sign_up.viewmodel.SignUpViewModel
+import com.example.neurotalk.presentation.auth.sign_up.viewmodel.SignUpViewModelFactory
 import javax.inject.Inject
 
 class SignUpFragment : BaseMviFragment<SignUpState, SignUpMessage, SignUpDependencies>() {
@@ -29,12 +26,21 @@ class SignUpFragment : BaseMviFragment<SignUpState, SignUpMessage, SignUpDepende
     @Inject
     lateinit var viewModelFactory: SignUpViewModelFactory
     override lateinit var viewModel: BaseMviViewModel<SignUpState, SignUpMessage, SignUpDependencies>
-//
-//    override val viewModel: SignUpViewModel by viewModels { viewModelFactory }
 
-//    override val viewModel: SignUpViewModel by lazyViewModel {
-//        requireContext().appComponent().signUpVmFactory().create()
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as NeuroTalkApp).applicationComponent.inject(this)
+        viewModel = ViewModelProvider(this, viewModelFactory)[SignUpViewModel::class.java]
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = RegistrationFragmentBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
     override fun initDispatchers() {
         binding.signInButton.setOnClickListener {
@@ -51,9 +57,12 @@ class SignUpFragment : BaseMviFragment<SignUpState, SignUpMessage, SignUpDepende
 
     override fun render(state: SignUpState) {
         when(state) {
-            SignUpState.Error -> Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()
-            SignUpState.Loading -> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_LONG).show()
-            SignUpState.NotStarted -> Toast.makeText(requireContext(), "NotStarted", Toast.LENGTH_LONG).show()
+            SignUpState.Error -> {
+                binding.loadingPb.isVisible = false
+                Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()
+            }
+            SignUpState.Loading -> binding.loadingPb.isVisible = true
+            SignUpState.NotStarted ->  binding.loadingPb.isVisible = false
             SignUpState.Success -> {
                 Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
 //                val intent = Intent(requireContext(), MainActivity::class.java)
@@ -62,25 +71,7 @@ class SignUpFragment : BaseMviFragment<SignUpState, SignUpMessage, SignUpDepende
         }
     }
 
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        (requireActivity().application as NeuroTalkApp).applicationComponent.inject(this)
-//    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (requireActivity().application as NeuroTalkApp).applicationComponent.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[SignUpViewModel::class.java]
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = RegistrationFragmentBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

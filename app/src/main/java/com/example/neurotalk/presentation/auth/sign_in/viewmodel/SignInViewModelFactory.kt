@@ -1,17 +1,19 @@
-package com.example.neurotalk.presentation.auth.sign_up
+package com.example.neurotalk.presentation.auth.sign_in.viewmodel
 
 import android.content.Context
-import android.view.View
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.domain.usecase.auth.LoginUseCase
 import com.example.domain.usecase.auth.RegisterUseCase
-import com.example.neurotalk.navigation.Navigator
 import com.example.neurotalk.presentation.auth.AuthNavigator
+import com.example.neurotalk.presentation.auth.sign_in.feature.SignInDependencies
+import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpDependencies
+import com.example.neurotalk.presentation.auth.sign_up.viewmodel.SignUpViewModel
 import javax.inject.Inject
 
-class SignUpViewModelFactory @Inject constructor(
-    private val signUpUseCase: RegisterUseCase,
+class SignInViewModelFactory @Inject constructor(
+    private val signInUseCase: LoginUseCase,
     private val navigator: AuthNavigator,
     private val context: Context,
 //    private val rootView: View,
@@ -19,10 +21,10 @@ class SignUpViewModelFactory @Inject constructor(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
-            return SignUpViewModel(
-                dependencies = SignUpDependencies(
-                   signUpUseCase = signUpUseCase,
+        if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
+            return SignInViewModel(
+                dependencies = SignInDependencies(
+                    signInUseCase = signInUseCase,
                     navigator = navigator,
                     context = context,
 //                    rootView = rootView

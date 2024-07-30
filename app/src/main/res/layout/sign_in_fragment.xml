@@ -68,15 +68,38 @@
         android:text="Forgot password?"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/signInButton"
-        style="@style/RegistrationButtonStyle"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signInButtonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="36dp"
-        android:paddingVertical="14dp"
-        android:text="Sign in"
-        android:textSize="16sp" />
+        android:paddingVertical="14dp">
+
+        <Button
+            android:id="@+id/signInButton"
+            style="@style/RegistrationButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="36dp"
+            android:paddingVertical="14dp"
+            android:text="Sign in"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/loadingPb"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/signInButton"
+            app:layout_constraintEnd_toEndOf="@+id/signInButton"
+            app:layout_constraintStart_toStartOf="@+id/signInButton"
+            app:layout_constraintTop_toTopOf="@+id/signInButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
