@@ -11,6 +11,9 @@ import com.example.neurotalk.presentation.auth.sign_in.SignInFragment
 import com.example.neurotalk.presentation.auth.sign_in.viewmodel.SignInViewModelFactory
 import com.example.neurotalk.presentation.auth.sign_up.SignUpFragment
 import com.example.neurotalk.presentation.auth.sign_up.viewmodel.SignUpViewModelFactory
+import com.example.neurotalk.presentation.main.home.HomeFragment
+import com.example.neurotalk.presentation.main.home.viewmodel.HomeViewModel
+import com.example.neurotalk.presentation.main.home.viewmodel.HomeViewModelFactory
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -29,6 +32,8 @@ interface ApplicationComponent {
 
     fun inject(fragment: SignUpFragment)
 
+    fun inject(fragment: HomeFragment)
+
     fun getMap(): Map<Class<*>, ViewModel>
 
     fun signUpVmFactory(): SignUpViewModelFactory
@@ -38,5 +43,7 @@ interface ApplicationComponent {
     interface Factory {
         fun create(@BindsInstance application: Application): ApplicationComponent
     }
+
+    fun homeVmFactory(): HomeViewModelFactory
 
 }

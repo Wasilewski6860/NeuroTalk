@@ -2,4 +2,7 @@
     <string name="app_name">NeuroTalk</string>
     <string name="stub" translatable="false">STUB!</string>
     <string name="confirmation_error">Password and confirm password should be equals</string>
+    <string name="talk_with_bot" translatable="false">Talk with bot</string>
+    <string name="chat_with_bot" translatable="false">Chat with bot</string>
+    <string name="dict" translatable="false">Dict</string>
 </resources>
