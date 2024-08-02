@@ -90,8 +90,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/mainScreenRecyclerHolder"
-        app:layout_constraintStart_toStartOf="@+id/mainScreenRecyclerHolder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainScreenFoldingTopContainer"
         app:layout_constraintBottom_toBottomOf="parent">
 
