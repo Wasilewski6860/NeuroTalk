@@ -7,6 +7,7 @@ import com.example.neurotalk.di.module.AppModule
 import com.example.neurotalk.di.module.DataModule
 import com.example.neurotalk.di.module.DomainModule
 import com.example.neurotalk.di.module.ViewModelModule
+import com.example.neurotalk.presentation.auth.AuthActivity
 import com.example.neurotalk.presentation.auth.sign_in.SignInFragment
 import com.example.neurotalk.presentation.auth.sign_in.viewmodel.SignInViewModelFactory
 import com.example.neurotalk.presentation.auth.sign_up.SignUpFragment
@@ -28,6 +29,7 @@ import javax.inject.Singleton
 )
 interface ApplicationComponent {
 
+    fun inject(activity: AuthActivity)
     fun inject(fragment: SignInFragment)
 
     fun inject(fragment: SignUpFragment)
