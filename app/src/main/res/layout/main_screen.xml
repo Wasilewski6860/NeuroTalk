@@ -1,133 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.neurotalk.custom_ui.MainScreenHeaderView
-        android:id="@+id/mainScreenHeaderFrameLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainScreenFoldingTopContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:userAvatar="@drawable/avatar_default"
-        app:userName="@string/stub"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <!--  TODO: may be remove this padding later  -->
-    <TextView
-        android:id="@+id/mainScreenTitleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:paddingEnd="150dp"
-        android:text="How may I help you today?"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainScreenHeaderFrameLayout" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/mainScreenCardsHolder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainScreenTitleTextView">
+        <com.example.neurotalk.custom_ui.MainScreenHeaderView
+            android:id="@+id/mainScreenHeaderFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:userAvatar="@drawable/avatar_default"
+            app:userName="@string/stub"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.example.neurotalk.custom_ui.CustomCardView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:cardImage="@drawable/speaking_icon"
-            app:cardText="@string/talk_with_bot"
-            app:cardBackground="@color/light_pink"/>
+        <!--  TODO: may be remove this padding later  -->
+        <TextView
+            android:id="@+id/mainScreenTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingEnd="150dp"
+            android:text="How may I help you today?"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainScreenHeaderFrameLayout" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/mainScreenCardsHolder"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainScreenTitleTextView">
 
             <com.example.neurotalk.custom_ui.CustomCardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:cardText="@string/chat_with_bot"
-                app:cardImage="@drawable/chat_icon"
-                app:cardBackground="@color/medium_pink"/>
+                app:cardImage="@drawable/speaking_icon"
+                app:cardText="@string/talk_with_bot"
+                app:cardBackground="@color/light_pink"/>
 
-            <com.example.neurotalk.custom_ui.CustomCardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:cardImage="@drawable/dictionary_icon"
-                app:cardText="@string/dict"
-                app:cardBackground="@color/dark_pink"/>
+                android:orientation="vertical">
+
+                <com.example.neurotalk.custom_ui.CustomCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:cardText="@string/chat_with_bot"
+                    app:cardImage="@drawable/chat_icon"
+                    app:cardBackground="@color/medium_pink"/>
+
+                <com.example.neurotalk.custom_ui.CustomCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:cardImage="@drawable/dictionary_icon"
+                    app:cardText="@string/dict"
+                    app:cardBackground="@color/dark_pink"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <FrameLayout
-        android:id="@+id/mainScreenFooterFrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingVertical="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/mainScreenRecyclerHolder"
-        app:layout_constraintStart_toStartOf="@+id/mainScreenRecyclerHolder"
-        app:layout_constraintTop_toBottomOf="@+id/mainScreenCardsHolder">
-
-        <TextView
-            android:id="@+id/allChatsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:fontFamily="@font/poppins_light"
-            android:text="Chats"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/seeAllChatsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="14dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="center"
-            android:text="See all chats" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/mainScreenRecyclerHolder"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainScreenUnfoldingBottomContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainScreenFooterFrameLayout">
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/mainScreenRecyclerHolder"
+        app:layout_constraintStart_toStartOf="@+id/mainScreenRecyclerHolder"
+        app:layout_constraintTop_toBottomOf="@+id/mainScreenFoldingTopContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatsRecyclerView"
+        <FrameLayout
+            android:id="@+id/mainScreenFooterFrameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ProgressBar
-            android:id="@+id/chatLoadingPb"
+            <TextView
+                android:id="@+id/allChatsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="Chats"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/seeAllChatsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="14dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="See all chats" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/mainScreenRecyclerHolder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="100dp"
-            android:visibility="gone" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainScreenFooterFrameLayout">
 
-    </FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/chatLoadingPb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="100dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
