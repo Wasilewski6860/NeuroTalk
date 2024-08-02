@@ -9,5 +9,11 @@
     <declare-styleable name="CustomCardView">
         <attr name="cardImage" format="reference"/>
         <attr name="cardText" format="reference"/>
+        <attr name="cardBackground" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="MainScreenHeaderView">
+        <attr name="userAvatar" format="reference"/>
+        <attr name="userName" format="reference"/>
     </declare-styleable>
 </resources>

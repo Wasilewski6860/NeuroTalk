@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NeuroTalk</string>
+    <string name="confirmation_error">чет там пароль - поменять strings</string>
+    <string name="hi">"Првет, "</string>
+</resources>

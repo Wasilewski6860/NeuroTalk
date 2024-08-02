@@ -30,7 +30,7 @@ class SignUpFragment : BaseMviFragment<SignUpState, SignUpMessage, SignUpDepende
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity().application as NeuroTalkApp).applicationComponent.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[SignUpViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[SignUpViewModel::class]
     }
 
     override fun onCreateView(

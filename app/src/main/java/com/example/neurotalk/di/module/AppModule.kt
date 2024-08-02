@@ -5,9 +5,12 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import com.example.domain.usecase.auth.LoginUseCase
 import com.example.domain.usecase.auth.RegisterUseCase
+import com.example.domain.usecase.chat_info.GetAllChatsInfoUseCase
+import com.example.domain.usecase.user_info.GetUserInfoUseCase
 import com.example.neurotalk.presentation.auth.AuthNavigator
 import com.example.neurotalk.presentation.auth.sign_in.feature.SignInDependencies
 import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpDependencies
+import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -51,6 +54,18 @@ class AppModule {
             signInUseCase = signInUseCase,
             navigator = navigator,
             context = context
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideHomeDependencies(
+        getUserInfoUseCase: GetUserInfoUseCase,
+        getAllChatsInfoUseCase: GetAllChatsInfoUseCase
+    ): HomeDependencies {
+        return HomeDependencies(
+            getUserInfoUseCase = getUserInfoUseCase,
+            getAllChatsInfoUseCase = getAllChatsInfoUseCase
         )
     }
 

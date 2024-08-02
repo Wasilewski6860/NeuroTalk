@@ -1,12 +1,18 @@
 package com.example.neurotalk.di.module
 
 import com.example.domain.repository.AuthRepository
+import com.example.domain.repository.ChatRepository
 import com.example.domain.repository.SessionRepository
+import com.example.domain.repository.UserRepository
 import com.example.domain.usecase.auth.LoginUseCase
 import com.example.domain.usecase.auth.RegisterUseCase
+import com.example.domain.usecase.chat_info.GetAllChatsInfoUseCase
 import com.example.domain.usecase.session.GetSessionUseCase
+import com.example.domain.usecase.session.GetUserInfoSPUseCase
 import com.example.domain.usecase.session.IsLoggedUseCase
 import com.example.domain.usecase.session.SaveSessionUseCase
+import com.example.domain.usecase.session.SaveUserInfoSPUseCase
+import com.example.domain.usecase.user_info.GetUserInfoUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -37,4 +43,40 @@ class DomainModule {
     fun provideSaveSessionUseCase( sessionRepository: SessionRepository ): SaveSessionUseCase {
         return SaveSessionUseCase( sessionRepository = sessionRepository )
     }
+
+    @Provides
+    fun provideGetAllChatsInfoUseCase(
+        chatRepository: ChatRepository,
+        getSessionUseCase: GetSessionUseCase
+    ): GetAllChatsInfoUseCase {
+        return GetAllChatsInfoUseCase(
+            repository = chatRepository, getSessionUseCase = getSessionUseCase
+        )
+    }
+
+    @Provides
+    fun provideGetUserInfoSPUseCase(repository: SessionRepository): GetUserInfoSPUseCase {
+        return GetUserInfoSPUseCase(repository = repository)
+    }
+
+    @Provides
+    fun provideSaveUserInfoSPUseCase(repository: SessionRepository): SaveUserInfoSPUseCase {
+        return SaveUserInfoSPUseCase(repository = repository)
+    }
+
+    @Provides
+    fun provideGetUserInfoUseCase(
+        repository: UserRepository,
+        getUserInfoSPUseCase: GetUserInfoSPUseCase,
+        saveUserInfoSPUseCase: SaveUserInfoSPUseCase,
+        getSessionUseCase: GetSessionUseCase
+    ) : GetUserInfoUseCase {
+        return GetUserInfoUseCase(
+            repository = repository,
+            getUserInfoSPUseCase = getUserInfoSPUseCase,
+            saveUserInfoSPUseCase = saveUserInfoSPUseCase,
+            sessionUseCase = getSessionUseCase
+        )
+    }
+
 }
