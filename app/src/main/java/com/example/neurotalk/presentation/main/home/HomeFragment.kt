@@ -48,8 +48,8 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
         binding.apply {
             when (state) {
                 is HomeState.UserInfoLoaded -> {
-                    greetingTextView.visibility = View.VISIBLE
-                    greetingTextView.text = "Hi, ${state.userInfo.userName}"
+//                    greetingTextView.visibility = View.VISIBLE
+//                    greetingTextView.text = "Hi, ${state.userInfo.userName}"
                     Log.d("abs", "user loaded ${state.userInfo}")
                 }
                 is HomeState.ChatsLoaded -> {
@@ -60,7 +60,7 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
                 is HomeState.Loading -> {
                     chatsRecyclerView.visibility = View.INVISIBLE
                     chatLoadingPb.visibility = View.VISIBLE
-                    greetingTextView.visibility = View.INVISIBLE
+//                    greetingTextView.visibility = View.INVISIBLE
                     Log.d("abs", "loading")
                 }
                 is HomeState.ChatsLoadingError -> {
@@ -70,8 +70,8 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
                     ).show() // TODO: Replace that later
                 }
                 is HomeState.UserInfoLoadingError -> {
-                    greetingTextView.text = "ERROR"
-                    greetingTextView.visibility = View.VISIBLE
+//                    greetingTextView.text = "ERROR"
+//                    greetingTextView.visibility = View.VISIBLE
                 }
                 is HomeState.Error -> Unit
             }

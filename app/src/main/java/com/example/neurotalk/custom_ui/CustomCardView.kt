@@ -5,6 +5,9 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import com.example.neurotalk.R
 
 class CustomCardView @JvmOverloads constructor(
@@ -15,11 +18,13 @@ class CustomCardView @JvmOverloads constructor(
 
     private var imageView: ImageView
     private var textView: TextView
+    private var cardView: CardView
 
     init {
         inflate(context, R.layout.custom_card, this)
         imageView = findViewById(R.id.cardIconImageView)
         textView = findViewById(R.id.cardTextView)
+        cardView = findViewById(R.id.mainCardHolder)
 
         attrs?.let {
             val attrsArray = context.theme.obtainStyledAttributes(
@@ -33,13 +38,16 @@ class CustomCardView @JvmOverloads constructor(
                 R.styleable.CustomCardView_cardText,
                 R.string.stub
             )
+            val backgroundColor = attrsArray.getResourceId(
+                R.styleable.CustomCardView_cardBackground,
+                R.color.light_pink
+            )
             attrsArray.recycle()
 
-            imageView.setImageDrawable(context.getDrawable(image))
+            imageView.setImageDrawable(AppCompatResources.getDrawable(context, image))
             textView.text = context.getString(text)
+            cardView.setCardBackgroundColor(ContextCompat.getColor(context, backgroundColor))
         }
     }
-
-    val cardTitle get() = textView.text
 
 }

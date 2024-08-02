@@ -1,108 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+    <com.example.neurotalk.custom_ui.MainScreenHeaderView
         android:id="@+id/mainScreenHeaderFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:userAvatar="@drawable/avatar_default"
+        app:userName="@string/stub"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <TextView
-            android:id="@+id/greetingTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Hi, User!"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/accountAvatarImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/avatar_default" />
-
-    </FrameLayout>
-
+    <!--  TODO: may be remove this padding later  -->
     <TextView
         android:id="@+id/mainScreenTitleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="14dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="30dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="How may I help you?"
-        android:textSize="30sp"
+        android:paddingEnd="150dp"
+        android:text="How may I help you today?"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainScreenHeaderFrameLayout" />
 
-    <GridLayout
-        android:id="@+id/mainScreenGridLayout"
+    <LinearLayout
+        android:id="@+id/mainScreenCardsHolder"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:useDefaultMargins="false"
-        app:layout_constraintBottom_toTopOf="@+id/mainScreenFooterFrameLayout"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainScreenTitleTextView">
+        app:layout_constraintTop_toBottomOf="@+id/mainScreenTitleTextView">
 
         <com.example.neurotalk.custom_ui.CustomCardView
-            android:id="@+id/talkWithBotCard"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowSpan="1"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             app:cardImage="@drawable/speaking_icon"
-            app:cardText="@string/talk_with_bot" />
+            app:cardText="@string/talk_with_bot"
+            app:cardBackground="@color/light_pink"/>
 
-        <com.example.neurotalk.custom_ui.CustomCardView
-            android:id="@+id/chatWithBotCard"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            app:cardImage="@drawable/chat_icon"
-            app:cardText="@string/chat_with_bot" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <com.example.neurotalk.custom_ui.CustomCardView
-            android:id="@+id/dictionaryCard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            app:cardImage="@drawable/dictionary_icon"
-            app:cardText="@string/dict" />
+            <com.example.neurotalk.custom_ui.CustomCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:cardText="@string/chat_with_bot"
+                app:cardImage="@drawable/chat_icon"
+                app:cardBackground="@color/medium_pink"/>
 
-    </GridLayout>
+            <com.example.neurotalk.custom_ui.CustomCardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:cardImage="@drawable/dictionary_icon"
+                app:cardText="@string/dict"
+                app:cardBackground="@color/dark_pink"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/mainScreenFooterFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:paddingVertical="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/mainScreenRecyclerHolder"
         app:layout_constraintEnd_toEndOf="@+id/mainScreenRecyclerHolder"
-        app:layout_constraintStart_toStartOf="@+id/mainScreenRecyclerHolder">
+        app:layout_constraintStart_toStartOf="@+id/mainScreenRecyclerHolder"
+        app:layout_constraintTop_toBottomOf="@+id/mainScreenCardsHolder">
 
         <TextView
             android:id="@+id/allChatsTextView"
@@ -128,22 +110,23 @@
     <FrameLayout
         android:id="@+id/mainScreenRecyclerHolder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainScreenFooterFrameLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:id="@+id/chatLoadingPb"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="100dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </FrameLayout>
 

@@ -5,4 +5,5 @@
     <string name="talk_with_bot" translatable="false">Talk with bot</string>
     <string name="chat_with_bot" translatable="false">Chat with bot</string>
     <string name="dict" translatable="false">Dict</string>
+    <string name="hi">Hi,\ </string>
 </resources>
