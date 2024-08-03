@@ -59,15 +59,19 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
-    //OkHttp
+    // OkHttp
     implementation(libs.okhttp)
     implementation(libs.okhttp3.logging.interceptor)
 
-    //Retrofit
+    // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.androidx.lifecycle.common)
 
+    // Dagger
     implementation libs.dagger
     kapt libs.dagger.compiler
+
+    // CircleImageView
+    implementation libs.circleimageview
 }

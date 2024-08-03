@@ -24,16 +24,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <com.example.neurotalk.custom_ui.MainScreenHeaderView
-                    android:id="@+id/mainScreenHeaderFrameLayout"
+                <FrameLayout
+                    android:id="@+id/mainScreenHeaderContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:userAvatar="@drawable/avatar_default"
-                    app:userName="@string/stub"
+                    android:layout_height="match_parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.example.neurotalk.custom_ui.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:firstWord="@string/hi"
+                        app:secondWord="@string/stub"
+                        android:layout_gravity="center_vertical"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/accountAvatarImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="14dp"
+                        android:src="@drawable/avatar_default"
+                        android:layout_gravity="end"/>
+
+                </FrameLayout>
 
                 <!--  TODO: may be remove this padding later  -->
                 <TextView
@@ -49,7 +63,7 @@
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mainScreenHeaderFrameLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/mainScreenHeaderContainer" />
 
                 <LinearLayout
                     android:id="@+id/mainScreenCardsHolder"
@@ -134,16 +148,6 @@
                     android:layout_marginStart="14dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="Chats"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/allChatsTextViewHided"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="Chats"
-                    android:visibility="invisible"
                     android:textSize="16sp" />
 
                 <TextView

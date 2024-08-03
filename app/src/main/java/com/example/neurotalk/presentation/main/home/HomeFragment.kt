@@ -2,34 +2,27 @@ package com.example.neurotalk.presentation.main.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
-import com.example.neurotalk.R
+import com.example.domain.models.ChatInfo
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.MainScreenBinding
+import com.example.neurotalk.presentation.main.home.adapter.ChatsListAdapter
 import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
 import com.example.neurotalk.presentation.main.home.feature.HomeMessage
 import com.example.neurotalk.presentation.main.home.feature.HomeState
 import com.example.neurotalk.presentation.main.home.viewmodel.HomeViewModel
 import com.example.neurotalk.presentation.main.home.viewmodel.HomeViewModelFactory
-import com.google.android.material.appbar.AppBarLayout
 import javax.inject.Inject
 
 class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>() {
@@ -39,6 +32,8 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
     override lateinit var viewModel: BaseMviViewModel<HomeState, HomeMessage, HomeDependencies>
+
+    private lateinit var adapter: ChatsListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +48,7 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
         binding = MainScreenBinding.inflate(layoutInflater, container, false)
 
         initFoldingOffsetChangingListener()
+        setupRecycler()
 
         return binding.root
     }
@@ -98,6 +94,16 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
                 is HomeState.Error -> Unit
             }
         }
+    }
+
+    private fun setupRecycler() = binding.apply {
+        adapter = ChatsListAdapter(object : ChatsListAdapter.OnItemClick {
+            override fun onChatClick(adapterPosition: Int) {
+                Log.d("Home fragment recycler", "clicked on $adapterPosition pos")
+            }
+        })
+        chatsRecyclerView.adapter = adapter
+        chatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
     }
 
     private fun initFoldingOffsetChangingListener() = binding.apply {

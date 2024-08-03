@@ -39,7 +39,7 @@ class MainScreenHeaderView @JvmOverloads constructor(
 
             userNameTextView.text = context.getString(userNameText)
             userNameTextView.setTextColor(context.getColor(R.color.light_pink))
-            userAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(context, userAvatar))
+            userAvatarImageView.setImageDrawable(context.getDrawable(userAvatar))
         }
     }
 

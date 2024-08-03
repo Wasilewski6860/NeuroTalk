@@ -16,4 +16,9 @@
         <attr name="userAvatar" format="reference"/>
         <attr name="userName" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="firstWord" format="reference"/>
+        <attr name="secondWord" format="reference"/>
+    </declare-styleable>
 </resources>
