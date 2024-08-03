@@ -13,6 +13,8 @@ import com.example.data.storage.network.Endpoints.BASE_URL
 import com.example.data.storage.network.api.AuthApi
 import com.example.data.storage.network.api.ChatApi
 import com.example.data.storage.network.api.UserInfoApi
+import com.example.data.storage.network.web_socket.ChatWebSocket
+import com.example.data.storage.network.web_socket.OkHttpChatWebSocket
 import com.example.domain.repository.AuthRepository
 import com.example.domain.repository.ChatRepository
 import com.example.domain.repository.PreferencesRepository
@@ -94,6 +96,12 @@ class DataModule {
 
     @Provides
     @Singleton
+    fun providesChatWebSocket(client: OkHttpClient): ChatWebSocket {
+        return OkHttpChatWebSocket(client)
+    }
+
+    @Provides
+    @Singleton
     fun provideAuthRepository(authApi: AuthApi): AuthRepository {
         return AuthRepositoryImpl(
             authApi = authApi
@@ -123,9 +131,10 @@ class DataModule {
     @Provides
     @Singleton
     fun provideChatRepository(
-        api: ChatApi
+        api: ChatApi,
+        socket: ChatWebSocket
     ): ChatRepository {
-        return ChatRepositoryImpl(api = api)
+        return ChatRepositoryImpl(api = api, socket = socket)
     }
 
     @Provides
@@ -135,5 +144,6 @@ class DataModule {
     ): UserRepository {
         return UserRepositoryImpl(api = api)
     }
+
 
 }

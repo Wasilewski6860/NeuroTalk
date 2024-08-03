@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ChatRepository {
     fun connect()
+    fun disconnect()
     fun sendMessage(message: String)
     fun getMessage(): Flow<String>
     suspend fun getAllChats(userId: String?): Response<List<ChatInfo>>
