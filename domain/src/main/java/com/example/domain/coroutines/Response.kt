@@ -12,19 +12,10 @@ sealed class Response<out T> {
     }
 }
 
-/**
- * Return [Try.Success.value] or null
- */
 fun <T : Any> Response<T>.getOrNull(): T? = (this as? Response.Success)?.value
 
-/**
- * Return [Try.Success.value] or [default]
- */
 fun <T : Any> Response<T>.getOrDefault(default: T): T = getOrNull() ?: default
 
-/**
- * Return [Try.Success.value] or throw [throwable] if defined or [Try.Failure.error]
- */
 fun <T : Any> Response<T>.getOrThrow(throwable: Throwable? = null): T {
     return when (this) {
         is Response.Success -> value
