@@ -1,14 +1,31 @@
 package com.example.data.repository
 
 import com.example.data.storage.network.api.ChatApi
+import com.example.data.storage.network.web_socket.ChatWebSocket
 import com.example.domain.coroutines.Response
 import com.example.domain.exceptions.NoUserDataException
 import com.example.domain.models.ChatInfo as DomainChatInfo
 import com.example.domain.repository.ChatRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-class ChatRepositoryImpl(private val api: ChatApi) : ChatRepository {
+class ChatRepositoryImpl(private val api: ChatApi, private val socket: ChatWebSocket) : ChatRepository {
+    override fun connect() {
+        socket.connect()
+    }
+
+    override fun disconnect() {
+        socket.disconnect()
+    }
+
+    override fun sendMessage(message: String) {
+        socket.sendMessage(message)
+    }
+
+    override fun getMessage(): Flow<String> {
+        return socket.observeMessages()
+    }
 
     override suspend fun getAllChats(userId: String?): Response<List<DomainChatInfo>> {
         return try {

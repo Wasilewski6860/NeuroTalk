@@ -36,7 +36,7 @@ class MainScreenHeaderView @JvmOverloads constructor(
                 R.drawable.avatar_default
             )
             attrsArray.recycle()
-
+            val text = context.getString(userNameText)
             userNameTextView.text = context.getString(userNameText)
             userNameTextView.setTextColor(context.getColor(R.color.light_pink))
             userAvatarImageView.setImageDrawable(context.getDrawable(userAvatar))

@@ -7,4 +7,6 @@ object Endpoints {
 
     const val GET_USER = ""
     const val GET_CHAT = ""
+
+    const val CHAT = ""
 }

@@ -6,6 +6,9 @@ import com.example.domain.repository.SessionRepository
 import com.example.domain.repository.UserRepository
 import com.example.domain.usecase.auth.LoginUseCase
 import com.example.domain.usecase.auth.RegisterUseCase
+import com.example.domain.usecase.chat.ConnectChatUseCase
+import com.example.domain.usecase.chat.GetMessagesUseCase
+import com.example.domain.usecase.chat.SendMessageUseCase
 import com.example.domain.usecase.chat_info.GetAllChatsInfoUseCase
 import com.example.domain.usecase.session.GetSessionUseCase
 import com.example.domain.usecase.session.GetUserInfoSPUseCase
@@ -79,4 +82,18 @@ class DomainModule {
         )
     }
 
+    @Provides
+    fun provideSendMessageUseCase(repository: ChatRepository): SendMessageUseCase {
+        return SendMessageUseCase(chatRepository = repository)
+    }
+
+    @Provides
+    fun provideConnectChatUseCase(repository: ChatRepository): ConnectChatUseCase {
+        return ConnectChatUseCase(chatRepository = repository)
+    }
+
+    @Provides
+    fun provideGetMessagesUseCase(repository: ChatRepository): GetMessagesUseCase {
+        return GetMessagesUseCase(chatRepository = repository)
+    }
 }

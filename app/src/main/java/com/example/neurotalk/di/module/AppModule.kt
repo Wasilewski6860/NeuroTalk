@@ -5,11 +5,15 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import com.example.domain.usecase.auth.LoginUseCase
 import com.example.domain.usecase.auth.RegisterUseCase
+import com.example.domain.usecase.chat.ConnectChatUseCase
+import com.example.domain.usecase.chat.GetMessagesUseCase
+import com.example.domain.usecase.chat.SendMessageUseCase
 import com.example.domain.usecase.chat_info.GetAllChatsInfoUseCase
 import com.example.domain.usecase.user_info.GetUserInfoUseCase
 import com.example.neurotalk.presentation.auth.AuthNavigator
 import com.example.neurotalk.presentation.auth.sign_in.feature.SignInDependencies
 import com.example.neurotalk.presentation.auth.sign_up.feature.SignUpDependencies
+import com.example.neurotalk.presentation.main.chat.feature.ChatDependencies
 import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
 import dagger.Module
 import dagger.Provides
@@ -66,6 +70,20 @@ class AppModule {
         return HomeDependencies(
             getUserInfoUseCase = getUserInfoUseCase,
             getAllChatsInfoUseCase = getAllChatsInfoUseCase
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideChatDependencies(
+        sendMessageUseCase: SendMessageUseCase,
+        getMessagesUseCase: GetMessagesUseCase,
+        connectChatUseCase: ConnectChatUseCase,
+    ): ChatDependencies {
+        return ChatDependencies(
+            sendMessageUseCase = sendMessageUseCase,
+            getMessagesUseCase = getMessagesUseCase,
+            connectChatUseCase = connectChatUseCase
         )
     }
 

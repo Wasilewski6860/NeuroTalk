@@ -14,7 +14,7 @@
 
     <declare-styleable name="MainScreenHeaderView">
         <attr name="userAvatar" format="reference"/>
-        <attr name="userName" format="reference"/>
+        <attr name="userName" format="reference|string"/>
     </declare-styleable>
 
     <declare-styleable name="CustomTextView">
