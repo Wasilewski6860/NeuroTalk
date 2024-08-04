@@ -1,45 +1,83 @@
 package com.example.neurotalk.presentation.main.home.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.ChatInfo
+import com.example.neurotalk.R
 import com.example.neurotalk.databinding.ChatItemBinding
 
 class ChatsListAdapter(
-    private val onItemCLick: OnItemClick
-) : ListAdapter<ChatInfo, ChatsListAdapter.ChatViewHolder>(DiffCallBack) {
+    private val listener: OnItemClick
+) : RecyclerView.Adapter<ChatsListAdapter.ChatItemHolder>() {
 
-    class ChatViewHolder(binding: ChatItemBinding) : RecyclerView.ViewHolder(binding.root)
+    /** Test values for now **/
+    private val chatsList: MutableList<ChatInfo> = mutableListOf(
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url"),
+        ChatInfo("1", "Some chat name", "url")
+    )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ChatItemBinding.inflate(inflater, parent, false)
-        return ChatViewHolder(binding)
-    }
+    inner class ChatItemHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val binding = ChatItemBinding.bind(view)
 
-    override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        // TODO: Implement code here after realizing ui part
-    }
-
-    interface OnItemClick {
-        fun onChatClick(chatId: String)
-    }
-
-    companion object {
-        val DiffCallBack = object : DiffUtil.ItemCallback<ChatInfo>() {
-
-            override fun areItemsTheSame(oldItem: ChatInfo, newItem: ChatInfo): Boolean {
-                return oldItem.chatId === newItem.chatId
+        fun bind(chat: ChatInfo) = with(binding) {
+            chatNameTextView.text = chat.chatName
+            // TODO: implement method which will set image on binding.chatIcon
+            chatItemRootView.setOnClickListener {
+                listener.onChatClick(adapterPosition)
             }
-
-            override fun areContentsTheSame(oldItem: ChatInfo, newItem: ChatInfo): Boolean {
-                return oldItem == newItem
-            }
-
         }
+    }
+
+   interface OnItemClick {
+       fun onChatClick(adapterPosition: Int)
+   }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemHolder {
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.chat_item, parent, false
+        )
+        return ChatItemHolder(view)
+    }
+
+    override fun getItemCount(): Int = chatsList.size
+
+    override fun onBindViewHolder(holder: ChatItemHolder, position: Int) {
+        holder.bind(chatsList[position])
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addChatToRecycler(item: ChatInfo) {
+        chatsList.add(item)
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addChatsListToRecycler(itemsList: List<ChatInfo>) {
+        itemsList.forEach {
+            chatsList.add(it)
+            notifyDataSetChanged()
+        }
+    }
+
+    fun deleteChatFromRecycler(position: Int) {
+        chatsList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
 }
