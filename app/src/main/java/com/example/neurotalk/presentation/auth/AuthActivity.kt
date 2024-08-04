@@ -3,6 +3,7 @@ package com.example.neurotalk.presentation.auth
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,7 @@ import com.example.neurotalk.databinding.ActivityMainBinding
 import com.example.neurotalk.di.component.AuthActivityComponent
 import com.example.neurotalk.presentation.main.MainActivity
 import com.example.neurotalk.utils.setPaddingToInset
+import com.example.neurotalk.utils.setupKeyboardHidingListener
 import javax.inject.Inject
 
 class AuthActivity : AppCompatActivity() {
@@ -66,4 +68,10 @@ class AuthActivity : AppCompatActivity() {
         registrationViewPager.adapter = viewPagerAdapter
         registrationTabBar.attachTo(registrationViewPager)
     }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        setupKeyboardHidingListener(binding.authRootView, ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
 }

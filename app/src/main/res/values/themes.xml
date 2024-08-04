@@ -18,6 +18,8 @@
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
+        <item name="botCloudBackgroundColor">@color/bot_message_background_day</item>
+
     </style>
 
     <style name="TitleTextStyle">

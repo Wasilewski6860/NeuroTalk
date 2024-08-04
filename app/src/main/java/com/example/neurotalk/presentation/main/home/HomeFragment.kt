@@ -13,6 +13,7 @@ import androidx.core.animation.doOnEnd
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
 import com.example.domain.models.ChatInfo
@@ -116,7 +117,7 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
             }
         })
         chatsRecyclerView.adapter = adapter
-        chatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
+        chatsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         chatsRecyclerView.addItemDecoration(ChatItemDivider(requireContext()))
     }
 

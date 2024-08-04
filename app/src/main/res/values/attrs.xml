@@ -21,4 +21,6 @@
         <attr name="firstWord" format="reference"/>
         <attr name="secondWord" format="reference"/>
     </declare-styleable>
+
+    <attr name="botCloudBackgroundColor" format="color"/>
 </resources>

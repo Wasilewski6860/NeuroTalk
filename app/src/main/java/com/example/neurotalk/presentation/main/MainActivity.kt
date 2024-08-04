@@ -1,7 +1,11 @@
 package com.example.neurotalk.presentation.main
 
+import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.WindowManager
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,7 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.neurotalk.R
 import com.example.neurotalk.databinding.ActivityAuthBinding
 import com.example.neurotalk.databinding.ActivityMainBinding
+import com.example.neurotalk.utils.KeyboardUtils
 import com.example.neurotalk.utils.setPaddingToInset
+import com.example.neurotalk.utils.setupKeyboardHidingListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +37,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        setupKeyboardHidingListener(binding.mainFragmentContainer, ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
 }

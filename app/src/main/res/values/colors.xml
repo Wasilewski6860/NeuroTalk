@@ -11,10 +11,20 @@
     <color name="divider_day_theme_color">#e3e0f3</color>
     <color name="divider_night_theme_color">#303030</color>
 
-    <color name="dark_pink">#CF4179</color>
+    <color name="dark_pink">#981D4E</color>
     <color name="medium_pink">#CF4179</color>
     <color name="light_pink">#FF6FA3</color>
 
     <color name="dark_grey">#2a272a</color>
+
+    <color name="start_message_color_day">#faf8ff</color>
+    <color name="end_message_color_day">#e3e0f3</color>
+
+    <color name="start_message_color_night">#4b4a54</color>
+    <color name="end_message_color_night">#2a272a</color>
+    <!-- #677381 <- can use instead end night -->
+
+    <color name="bot_message_background_night">#677381</color>
+    <color name="bot_message_background_day">#aca7cb</color>
 
 </resources>
