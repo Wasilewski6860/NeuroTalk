@@ -46,4 +46,8 @@
         <item name="boxStrokeColor">@color/white</item>
     </style>
 
+    <style name="chatBackgroundStyle">
+        <item name="android:background">@color/dark_grey</item>
+    </style>
+
 </resources>

@@ -45,8 +45,10 @@
         <item name="cursorColor">@color/black</item>
     </style>
 
+    <style name="chatBackgroundStyle">
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="Theme.NeuroTalk" parent="Base.Theme.NeuroTalk" />
-
-
 
 </resources>

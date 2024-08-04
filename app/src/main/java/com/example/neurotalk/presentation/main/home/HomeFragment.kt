@@ -10,13 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.animation.doOnEnd
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
 import com.example.domain.models.ChatInfo
+import com.example.neurotalk.R
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.MainScreenBinding
+import com.example.neurotalk.presentation.main.chat.ChatFragment
 import com.example.neurotalk.presentation.main.home.adapter.ChatItemDivider
 import com.example.neurotalk.presentation.main.home.adapter.ChatsListAdapter
 import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
@@ -50,6 +53,15 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
 
         initFoldingOffsetChangingListener()
         setupRecycler()
+
+        binding.chatWithBotCardView.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(
+                    R.id.mainFragmentContainer, ChatFragment()
+                )
+                .addToBackStack("TEST")
+                .commit()
+        }
 
         return binding.root
     }

@@ -14,4 +14,7 @@
     <color name="dark_pink">#CF4179</color>
     <color name="medium_pink">#CF4179</color>
     <color name="light_pink">#FF6FA3</color>
+
+    <color name="dark_grey">#2a272a</color>
+
 </resources>
