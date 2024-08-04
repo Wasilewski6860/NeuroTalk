@@ -21,7 +21,10 @@ class ChatItemDivider(context: Context) : RecyclerView.ItemDecoration() {
 
     private val paint: Paint = Paint().apply {
         color = context.getColor(
-            if (isDarkThemeEnabled) R.color.white else R.color.black
+            if (!isDarkThemeEnabled)
+                R.color.divider_day_theme_color
+            else
+                R.color.divider_night_theme_color
         )
         strokeWidth = context.resources.getDimensionPixelSize(R.dimen.divider_width).toFloat()
     }
