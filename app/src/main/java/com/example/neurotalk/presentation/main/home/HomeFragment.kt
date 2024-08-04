@@ -17,6 +17,7 @@ import com.example.base.BaseMviViewModel
 import com.example.domain.models.ChatInfo
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.MainScreenBinding
+import com.example.neurotalk.presentation.main.home.adapter.ChatItemDivider
 import com.example.neurotalk.presentation.main.home.adapter.ChatsListAdapter
 import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
 import com.example.neurotalk.presentation.main.home.feature.HomeMessage
@@ -104,6 +105,7 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
         })
         chatsRecyclerView.adapter = adapter
         chatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
+        chatsRecyclerView.addItemDecoration(ChatItemDivider(requireContext()))
     }
 
     private fun initFoldingOffsetChangingListener() = binding.apply {

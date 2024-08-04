@@ -8,6 +8,9 @@
 
     <color name="light_grey">#EDEEEF</color>
 
+    <color name="divider_color_medium">#aca7cb</color>
+    <color name="divider_color_light">#e3e0f3</color>
+
     <color name="dark_pink">#CF4179</color>
     <color name="medium_pink">#CF4179</color>
     <color name="light_pink">#FF6FA3</color>
