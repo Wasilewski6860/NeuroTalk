@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mistakeDescRootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mistakeMessageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp">
+
+        <TextView
+            android:id="@+id/mistakeMessageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginVertical="14dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="The quick brown fox jumps over the lazy dog.
+            \nThis sentence contains every letter of the alphabet."
+            android:textSize="30sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/mistakeExplanationTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="34dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="1. Commonality and Inevitability of Errors
+In software development, errors are both ubiquitous and unavoidable. They emerge as part of the natural process of creating and refining digital products.
+\n2. Errors as Reminders of Humanity
+Despite the precision required in coding, errors remind us of our human limitations and the inherent imperfections in our creative processes.
+\n3. Complexity and Creativity
+Each error highlights the intricate balance between achieving precise outcomes and navigating the complexities of software design. These mistakes underscore the creativity involved in problem-solving and innovation.
+\n4.Types of Errors
+Errors can range from simple syntax mistakes to complex bugs deeply embedded within the codebase. These variations reflect the multifaceted nature of software development challenges."
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/addToDictionaryButton"
+        style="@style/PinkImageViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="20dp"
+        android:src="@drawable/bookmark_unfilled_icon" />
+
+</LinearLayout>

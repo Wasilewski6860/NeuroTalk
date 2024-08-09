@@ -55,4 +55,8 @@
 
     <style name="Theme.NeuroTalk" parent="Base.Theme.NeuroTalk" />
 
+    <style name="PinkImageViewStyle">
+        <item name="android:tint">@color/medium_pink</item>
+    </style>
+
 </resources>

@@ -54,4 +54,8 @@
         <item name="android:background">@color/dark_grey</item>
     </style>
 
+    <style name="PinkImageViewStyle">
+        <item name="android:tint">@color/medium_pink</item>
+    </style>
+
 </resources>
