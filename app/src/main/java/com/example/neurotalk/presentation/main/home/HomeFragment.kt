@@ -11,12 +11,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.animation.doOnEnd
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
-import com.example.domain.models.ChatInfo
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.MainScreenBinding
+import com.example.neurotalk.navigation.NavigationAnimations
+import com.example.neurotalk.navigation.NavigationManager
+import com.example.neurotalk.presentation.main.chat.ChatFragment
 import com.example.neurotalk.presentation.main.home.adapter.ChatItemDivider
 import com.example.neurotalk.presentation.main.home.adapter.ChatsListAdapter
 import com.example.neurotalk.presentation.main.home.feature.HomeDependencies
@@ -51,11 +53,19 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
         initFoldingOffsetChangingListener()
         setupRecycler()
 
+        binding.chatWithBotCardView.setOnClickListener {
+            NavigationManager(parentFragmentManager).navigateTo(
+                fragment = ChatFragment(),
+                backStack = "backStack",
+                animation = NavigationAnimations.APPEAR_FROM_RIGHT,
+            )
+        }
+
         return binding.root
     }
 
     override fun initDispatchers() {
-//        dispatch(HomeMessage.HomeTest)
+        /** STUB! **/
     }
 
     override fun render(state: HomeState) {
@@ -104,7 +114,7 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
             }
         })
         chatsRecyclerView.adapter = adapter
-        chatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
+        chatsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         chatsRecyclerView.addItemDecoration(ChatItemDivider(requireContext()))
     }
 

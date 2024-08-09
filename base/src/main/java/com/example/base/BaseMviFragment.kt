@@ -11,51 +11,52 @@ import androidx.lifecycle.lifecycleScope
 
 abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : Fragment {
 
-  private val TAG = this::class.simpleName
+    private val TAG = this::class.simpleName
 
-  protected abstract var viewModel: BaseMviViewModel<State, Message, Dependency>
+    protected abstract var viewModel: BaseMviViewModel<State, Message, Dependency>
 
-  constructor() : super()
-  constructor(@LayoutRes layoutRes: Int) : super(layoutRes)
+    constructor() : super()
+    constructor(@LayoutRes layoutRes: Int) : super(layoutRes)
 
-  @CallSuper
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    initBackButtonHandler()
-    initDispatchers()
+    @CallSuper
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initBackButtonHandler()
+        initDispatchers()
 
-    lifecycleScope.launchWhenResumed {
-      viewModel.state.collect { state ->
-        renderAndLog(state)
-      }
-    }
-
-    viewModel.onCreated()
-  }
-
-  protected open val backButtonCallback: (() -> Unit)? = null
-
-  abstract fun initDispatchers()
-  abstract fun render(state: State)
-
-  protected fun dispatch(Message: Message) {
-    viewModel.dispatch(Message)
-  }
-
-  private fun initBackButtonHandler() {
-    val currentCallback = backButtonCallback
-    if (currentCallback != null) {
-      val backCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-          currentCallback.invoke()
+        lifecycleScope.launchWhenResumed {
+            viewModel.state.collect { state ->
+                renderAndLog(state)
+            }
         }
-      }
-      requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
-    }
-  }
 
-  private fun renderAndLog(state: State) {
-    Log.v(TAG,"Rendering state: $state")
-    render(state)
-  }
+        viewModel.onCreated()
+    }
+
+    protected open val backButtonCallback: (() -> Unit)? = null
+
+    abstract fun initDispatchers()
+    abstract fun render(state: State)
+
+    protected fun dispatch(message: Message) {
+        viewModel.dispatch(message)
+    }
+
+    private fun initBackButtonHandler() {
+        val currentCallback = backButtonCallback
+        if (currentCallback != null) {
+            val backCallback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    currentCallback.invoke()
+                }
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
+        }
+    }
+
+    private fun renderAndLog(state: State) {
+        Log.v(TAG, "Rendering state: $state")
+        render(state)
+    }
+
 }

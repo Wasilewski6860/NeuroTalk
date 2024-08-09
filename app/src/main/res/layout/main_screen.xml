@@ -76,6 +76,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/mainScreenTitleTextView">
 
                     <com.example.neurotalk.custom_ui.CustomCardView
+                        android:id="@+id/talkWithBotCardView"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -90,6 +91,7 @@
                         android:orientation="vertical">
 
                         <com.example.neurotalk.custom_ui.CustomCardView
+                            android:id="@+id/chatWithBotCardView"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
@@ -98,6 +100,7 @@
                             app:cardBackground="@color/medium_pink"/>
 
                         <com.example.neurotalk.custom_ui.CustomCardView
+                            android:id="@+id/dictionaryCardView"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"

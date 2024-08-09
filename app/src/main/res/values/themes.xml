@@ -18,6 +18,10 @@
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
+        <item name="botCloudBackgroundColor">@color/bot_message_background_day</item>
+
+        <item name="android:tint">@color/black</item>
+
     </style>
 
     <style name="TitleTextStyle">
@@ -45,8 +49,10 @@
         <item name="cursorColor">@color/black</item>
     </style>
 
+    <style name="chatBackgroundStyle">
+        <item name="android:background">@color/white</item>
+    </style>
+
     <style name="Theme.NeuroTalk" parent="Base.Theme.NeuroTalk" />
-
-
 
 </resources>

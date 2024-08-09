@@ -12,6 +12,10 @@
         <item name="boxStrokeColor">@color/white</item>
         <item name="registrationBarItemColor">@color/black</item>
 
+        <item name="botCloudBackgroundColor">@color/bot_message_background_night</item>
+
+        <item name="android:tint">@color/white</item>
+
     </style>
 
     <style name="TitleTextStyle">
@@ -44,6 +48,10 @@
 
     <style name="test">
         <item name="boxStrokeColor">@color/white</item>
+    </style>
+
+    <style name="chatBackgroundStyle">
+        <item name="android:background">@color/dark_grey</item>
     </style>
 
 </resources>
