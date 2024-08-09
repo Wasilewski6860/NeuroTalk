@@ -18,8 +18,6 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
     constructor() : super()
     constructor(@LayoutRes layoutRes: Int) : super(layoutRes)
 
-    // protected lateinit var navigationManager:
-
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
