@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.ImageButton
+import android.widget.ImageView
 import com.example.neurotalk.R
 
 class ChatInputBarView @JvmOverloads constructor(
@@ -13,7 +13,7 @@ class ChatInputBarView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : FrameLayout(context, attrs, defStyle) {
 
-    private var sendButtonView: ImageButton
+    private var sendButtonView: ImageView
     private var editTextView: EditText
 
     init {

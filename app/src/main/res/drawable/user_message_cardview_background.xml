@@ -7,10 +7,4 @@
         android:topRightRadius="20dp"
         android:bottomRightRadius="0dp"
     />
-    <gradient
-        android:startColor="@color/light_pink"
-        android:endColor="@color/dark_pink"
-        android:type="linear"
-        android:angle="270"
-        />
 </shape>

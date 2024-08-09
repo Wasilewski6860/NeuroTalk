@@ -11,6 +11,7 @@ import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.ChatScreenBinding
+import com.example.neurotalk.navigation.NavigationManager
 import com.example.neurotalk.presentation.main.chat.adapter.ChatMessagesAdapter
 import com.example.neurotalk.presentation.main.chat.feature.ChatDependencies
 import com.example.neurotalk.presentation.main.chat.feature.ChatMessage
@@ -63,6 +64,13 @@ class ChatFragment : BaseMviFragment<ChatState, ChatMessage, ChatDependencies>()
         }, requireContext())
         chatRecyclerView.adapter = adapter
         chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun initListeners() = binding.apply {
+        chatBackButton.setOnClickListener {
+            // TODO: Replace that later
+            NavigationManager(parentFragmentManager).navigateBack()
+        }
     }
 
 }

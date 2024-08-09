@@ -20,6 +20,9 @@ import com.example.domain.models.ChatInfo
 import com.example.neurotalk.R
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.MainScreenBinding
+import com.example.neurotalk.navigation.NavigationAnimations
+import com.example.neurotalk.navigation.NavigationManager
+import com.example.neurotalk.navigation.Screen
 import com.example.neurotalk.presentation.main.chat.ChatFragment
 import com.example.neurotalk.presentation.main.home.adapter.ChatItemDivider
 import com.example.neurotalk.presentation.main.home.adapter.ChatsListAdapter
@@ -56,19 +59,18 @@ class HomeFragment : BaseMviFragment<HomeState, HomeMessage, HomeDependencies>()
         setupRecycler()
 
         binding.chatWithBotCardView.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(
-                    R.id.mainFragmentContainer, ChatFragment()
-                )
-                .addToBackStack("TEST")
-                .commit()
+            NavigationManager(parentFragmentManager).navigateTo(
+                fragment = ChatFragment(),
+                backStack = "backStack",
+                animation = NavigationAnimations.APPEAR_FROM_RIGHT,
+            )
         }
 
         return binding.root
     }
 
     override fun initDispatchers() {
-//        dispatch(HomeMessage.HomeTest)
+        /** STUB! **/
     }
 
     override fun render(state: HomeState) {

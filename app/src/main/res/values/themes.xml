@@ -20,6 +20,8 @@
 
         <item name="botCloudBackgroundColor">@color/bot_message_background_day</item>
 
+        <item name="android:tint">@color/black</item>
+
     </style>
 
     <style name="TitleTextStyle">

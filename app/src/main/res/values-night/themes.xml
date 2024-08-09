@@ -14,6 +14,8 @@
 
         <item name="botCloudBackgroundColor">@color/bot_message_background_night</item>
 
+        <item name="android:tint">@color/white</item>
+
     </style>
 
     <style name="TitleTextStyle">

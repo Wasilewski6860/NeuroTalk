@@ -18,6 +18,8 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
     constructor() : super()
     constructor(@LayoutRes layoutRes: Int) : super(layoutRes)
 
+    // protected lateinit var navigationManager:
+
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,8 +40,8 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
     abstract fun initDispatchers()
     abstract fun render(state: State)
 
-    protected fun dispatch(Message: Message) {
-        viewModel.dispatch(Message)
+    protected fun dispatch(message: Message) {
+        viewModel.dispatch(message)
     }
 
     private fun initBackButtonHandler() {
@@ -58,4 +60,5 @@ abstract class BaseMviFragment<State : Any, Message : Any, Dependency : Any> : F
         Log.v(TAG, "Rendering state: $state")
         render(state)
     }
+
 }
