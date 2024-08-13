@@ -27,4 +27,6 @@
     <color name="bot_message_background_night">#677381</color>
     <color name="bot_message_background_day">#aca7cb</color>
 
+    <color name="mistake_highlight_color">#e02f4c</color>
+
 </resources>

@@ -23,4 +23,10 @@
     </declare-styleable>
 
     <attr name="botCloudBackgroundColor" format="color"/>
+
+    <declare-styleable name="HighlightedTextView">
+        <attr name="textColor" format="reference|color"/>
+        <attr name="text" format="reference|string"/>
+        <attr name="fontFamily" format="reference"/>
+    </declare-styleable>
 </resources>

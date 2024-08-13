@@ -11,6 +11,7 @@ import com.example.base.BaseMviFragment
 import com.example.base.BaseMviViewModel
 import com.example.neurotalk.app.NeuroTalkApp
 import com.example.neurotalk.databinding.ChatScreenBinding
+import com.example.neurotalk.navigation.NavigationAnimations
 import com.example.neurotalk.navigation.NavigationManager
 import com.example.neurotalk.presentation.main.chat.adapter.ChatMessagesAdapter
 import com.example.neurotalk.presentation.main.chat.feature.ChatDependencies
@@ -18,6 +19,7 @@ import com.example.neurotalk.presentation.main.chat.feature.ChatMessage
 import com.example.neurotalk.presentation.main.chat.feature.ChatState
 import com.example.neurotalk.presentation.main.chat.viewmodel.ChatViewModel
 import com.example.neurotalk.presentation.main.chat.viewmodel.ChatViewModelFactory
+import com.example.neurotalk.presentation.main.mistake.MistakeFragment
 import javax.inject.Inject
 
 class ChatFragment : BaseMviFragment<ChatState, ChatMessage, ChatDependencies>() {
@@ -44,6 +46,7 @@ class ChatFragment : BaseMviFragment<ChatState, ChatMessage, ChatDependencies>()
         binding = ChatScreenBinding.inflate(layoutInflater, container, false)
 
         setupRecycler()
+        initListeners()
 
         return binding.root
     }
@@ -59,6 +62,11 @@ class ChatFragment : BaseMviFragment<ChatState, ChatMessage, ChatDependencies>()
     private fun setupRecycler() = binding.apply {
         adapter = ChatMessagesAdapter(object : ChatMessagesAdapter.OnMessageClick {
             override fun onMessageClick(adapterPosition: Int) {
+                NavigationManager(parentFragmentManager).navigateTo(
+                    fragment = MistakeFragment(),
+                    backStack = "backStack",
+                    animation = NavigationAnimations.APPEAR_FROM_RIGHT,
+                )
                 Log.d("Chat fragment recycler", "clicked on $adapterPosition message")
             }
         }, requireContext())

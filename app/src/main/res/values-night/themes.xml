@@ -58,4 +58,12 @@
         <item name="android:tint">@color/medium_pink</item>
     </style>
 
+    <style name="MistakeDescContainer">
+        <item name="cardBackgroundColor">@color/divider_night_theme_color</item>
+    </style>
+
+    <style name="MistakeDecoratorColor">
+        <item name="cardBackgroundColor">@color/divider_day_theme_color</item>
+    </style>
+
 </resources>

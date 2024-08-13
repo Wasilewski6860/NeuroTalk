@@ -6,4 +6,16 @@
     <string name="chat_with_bot" translatable="false">Chat with bot</string>
     <string name="dict" translatable="false">Dict</string>
     <string name="hi">Hi,\ </string>
+    <string name="test_phrase" translatable="false">The quick brown fox jumps over the lazy dog.</string>
+    <string name="long_test_phrase" translatable="false">
+        1. Commonality and Inevitability of Errors
+In software development, errors are both ubiquitous and unavoidable. They emerge as part of the natural process of creating and refining digital products.
+\n2. Errors as Reminders of Humanity
+Despite the precision required in coding, errors remind us of our human limitations and the inherent imperfections in our creative processes.
+\n3. Complexity and Creativity
+Each error highlights the intricate balance between achieving precise outcomes and navigating the complexities of software design. These mistakes underscore the creativity involved in problem-solving and innovation.
+\n4.Types of Errors
+Errors can range from simple syntax mistakes to complex bugs deeply embedded within the codebase. These variations reflect the multifaceted nature of software development challenges.
+    </string>
+    <string name="mistake_desc_screen_title">Error analysis</string>
 </resources>
